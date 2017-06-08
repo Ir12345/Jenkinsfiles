@@ -1,2 +1,2 @@
-node {//git "https://github.com/Ir12345/Calculator.git"
+node {
 git “https://github.com/Ir12345/” + repo + “.git”def mvnHome = tool 'Maven'sh "'${mvnHome}/bin/mvn' clean site -Dgroups=" + groupstage('Test') {step([$class: 'Publisher', testResults: '**/testng-results.xml'])}stage(‘CC') {step([$class: 'JacocoPublisher', execPattern:'**/**.exec', classPattern: '**/classes', sourcePattern: '**/src/main/java'])}}
